@@ -24,7 +24,7 @@ if [ "$1" = 'mysqld' ]; then
 		mysqld --initialize-insecure=on --datadir="$DATADIR"
 		echo 'Database initialized'
 
-		mysqld --user=mysql --datadir="$DATADIR" --skip-networking &
+		mysqld --user=mysql --local-infile=1 --datadir="$DATADIR" --skip-networking &
 		pid="$!"
 
 		mysql=( mysql --protocol=socket -uroot )
